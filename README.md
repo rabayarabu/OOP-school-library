@@ -149,6 +149,6 @@ I would like to thanks [Microverse](https://www.microverse.org/).
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/rabayarabu/OOP-school-library/blob/dev/LICENSE) licensed.
+This project is [MIT](https://github.com/rabayarabu/OOP-school-library/blob/ruby-classes/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
