@@ -1,9 +1,7 @@
-require_relative 'base_decorator'
-require_relative 'capitalize_decorator'
 require_relative 'nameable'
-require_relative 'trimmer_decorator'
 
-class Person < nameable
+
+class Person < Nameable
   attr_reader :id
   attr_accessor :name, :age
 
@@ -21,5 +19,11 @@ class Person < nameable
 
   def correct_name
     @name
+  end
+
+  private
+
+  def of_age?
+    @age >= 18
   end
 end
