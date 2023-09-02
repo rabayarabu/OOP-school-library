@@ -1,12 +1,15 @@
 class Teacher < Person
-  attr_reader :specialization
+  attr_accessor :specialization
 
-  def initialize(age, specialization, parent_permission: true, name: 'Unknown')
-    super(age, parent_permission: parent_permission, name: name)
-    @specialization = specialization
+  def initialize(age, _specialization, name = 'Unknown')
+    super(age, name)
   end
 
-  def can_use_services?
+  def can_use_services
     true
+  end
+
+  def to_s
+    "Teacher: Age: #{@age}, Specialization: #{@specialization}, ID: #{@id}"
   end
 end
