@@ -44,5 +44,6 @@ def show_menu
     end
   end
 end
+   
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/MethodLength
