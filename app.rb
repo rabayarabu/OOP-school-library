@@ -3,6 +3,7 @@ require_relative 'person'
 require_relative 'teacher'
 require_relative 'rental'
 require_relative 'student'
+require 'json'
 
 class App
   attr_accessor :all_books, :all_people, :all_rentals
@@ -11,6 +12,20 @@ class App
     @all_books = []
     @all_people = []
     @all_rentals = []
+  end
+
+  def save_data
+    File.write('books.json', JSON.generate(@books))
+    File.write('./people.json', JSON.generate(@people))
+    File.write('rentals.json', JSON.generate(@rentals))
+    puts 'Data saved successfully.'
+  end
+
+  def load_data
+    @books = JSON.parse(File.read('books.json')) if File.exist?('books.json')
+    @people = JSON.parse(File.read('people.json')) if File.exist?('people.json')
+    @rentals = JSON.parse(File.read('rentals.json')) if File.exist?('rentals.json')
+    puts 'Data loaded successfully.'
   end
 
   def books

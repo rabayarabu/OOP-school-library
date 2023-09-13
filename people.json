@@ -1,7 +1,7 @@
 [
     {
       "id" : 125,
-      "name" : "Jack",
+      "name" : "Rabu",
       "age" : 34,
       "has_permission" : true,
       "type" : "Student",
@@ -9,7 +9,7 @@
     },
     {
       "id" : 528,
-      "name" : "Kai",
+      "name" : "Clarence",
       "age" : 43,
       "has_permission" : true,
       "type" : "Teacher"
