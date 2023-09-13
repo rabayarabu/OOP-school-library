@@ -12,6 +12,7 @@ class App
     @all_books = []
     @all_people = []
     @all_rentals = []
+    load_data
   end
 
   def save_data
