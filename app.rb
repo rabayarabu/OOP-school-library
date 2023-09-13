@@ -3,6 +3,7 @@ require_relative 'person'
 require_relative 'teacher'
 require_relative 'rental'
 require_relative 'student'
+require 'json'
 
 class App
   attr_accessor :all_books, :all_people, :all_rentals
@@ -95,5 +96,12 @@ class App
       rental.person.id == id
     end
     puts person_rental
+  end
+
+  def save_data
+    File.write('books.json', JSON.generate(@all_books))
+    File.write('./people.json', JSON.generate(@all_people))
+    File.write('rentals.json', JSON.generate(@all_rentals))
+    puts 'Data saved successfully.'
   end
 end

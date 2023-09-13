@@ -1,4 +1,5 @@
 require_relative 'app'
+require 'json'
 def show_menu
   puts ''
   puts 'Welcome to School Library App!'
@@ -37,6 +38,7 @@ def main
       app.all_personal_rentals(id)
     when 7
       puts 'GOODBYE'
+      app.save_data
       break
     else
       puts 'INVALID OPTION'
