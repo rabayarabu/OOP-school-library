@@ -1,0 +1,17 @@
+[
+    {
+      "id" : 125,
+      "name" : "Jack",
+      "age" : 34,
+      "has_permission" : true,
+      "type" : "Student",
+      "classroom" : "classroom"
+    },
+    {
+      "id" : 528,
+      "name" : "Kai",
+      "age" : 43,
+      "has_permission" : true,
+      "type" : "Teacher"
+    }
+  ]
