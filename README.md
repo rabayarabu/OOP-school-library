@@ -109,6 +109,9 @@ To run the project, instantiate the class files in `main.rb` and execute the fol
 - Twitter: [@rabaya_rabu](https://twitter.com/rabaya_rabu)
 - LinkedIn: [LinkedIn](https://linkedin.com/in/rabaya-rabu-142721169/)
 
+👤 ClarenceAtim
+- GitHub: [&nbsp; &nbsp; @githubhandle] (https://github.com/ClarenceAtim?tab=repositories)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
