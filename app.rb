@@ -16,28 +16,28 @@ class App
   end
 
   def save_data
-    File.write('books.json', JSON.generate(@books))
-    File.write('./people.json', JSON.generate(@people))
-    File.write('rentals.json', JSON.generate(@rentals))
+    File.write('books.json', JSON.generate(@all_books))
+    File.write('./people.json', JSON.generate(@all_people))
+    File.write('rentals.json', JSON.generate(@all_rentals))
     puts 'Data saved successfully.'
   end
 
   def load_data
-    @books = JSON.parse(File.read('books.json')) if File.exist?('books.json')
-    @people = JSON.parse(File.read('people.json')) if File.exist?('people.json')
-    @rentals = JSON.parse(File.read('rentals.json')) if File.exist?('rentals.json')
+    @all_books = JSON.parse(File.read('books.json')) if File.exist?('books.json')
+    @all_people = JSON.parse(File.read('people.json')) if File.exist?('people.json')
+    @all_rentals = JSON.parse(File.read('rentals.json')) if File.exist?('rentals.json')
     puts 'Data loaded successfully.'
   end
 
   def books
     @all_books.each_with_index do |book, index|
-      puts "#{index}) #{book}"
+      puts "#{index + 1}) #{book}"
     end
   end
 
   def people
     @all_people.each_with_index do |person, index|
-      puts "#{index}) #{person}"
+      puts "#{index + 1}) #{person}"
     end
   end
 

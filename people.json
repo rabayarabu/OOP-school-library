@@ -1,17 +1,1 @@
-[
-    {
-      "id" : 125,
-      "name" : "Rabu",
-      "age" : 34,
-      "has_permission" : true,
-      "type" : "Student",
-      "classroom" : "classroom"
-    },
-    {
-      "id" : 528,
-      "name" : "Clarence",
-      "age" : 43,
-      "has_permission" : true,
-      "type" : "Teacher"
-    }
-  ]
+["Student: ssss, Age: 22, Parent Permission: true ID:576"]
