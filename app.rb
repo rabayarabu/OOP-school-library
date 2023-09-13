@@ -1,13 +1,12 @@
 require_relative 'book'
 require_relative 'person'
 require_relative 'teacher'
-require_relative 'rental'
 require_relative 'student'
 require 'json'
+require_relative 'rental'
+
 
 class App
-  attr_accessor :all_books, :all_people, :all_rentals
-
   def initialize
     @all_books = []
     @all_people = []
@@ -27,76 +26,82 @@ class App
     end
   end
 
-  def add_teacher
-    puts 'Enter Age'
-    age = gets.chomp
-    puts 'Enter name'
+  # create person
+  def create_person(user_type)
+    print 'Age:'
+    age = gets.chomp.to_i
+    print 'Name:'
     name = gets.chomp
-    puts 'Enter specialization'
-    specialization = gets.chomp
-    new_teacher = Teacher.new(age, name)
-    new_teacher.specialization = specialization
-    @all_people << new_teacher
-    puts 'Added Teacher'
-  end
 
-  def add_student
-    puts 'Enter Age'
-    age = gets.chomp
-    puts 'Enter name'
-    name = gets.chomp
-    puts 'Has parent permission[Y/N]'
-    perm = gets.chomp.upcase
-    permission = (perm == 'Y')
-    new_student = Student.new(age, name)
-    new_student.parent_permission = permission
-    @all_people << new_student
-    puts 'Added student'
-  end
-
-  def add_person
-    puts 'Do you want to create a Student(1) or a Teacher(2). [Input the number]'
-    number = gets.chomp.to_i
-
-    case number
-    when 1
-      add_student
-    when 2
-      add_teacher
+    case user_type
+    when '1'
+      create_student(age, name)
+    when '2'
+      create_teacher(age, name)
     else
-      puts 'Input Error: Invalid choice...'
+      puts 'Invalid choice'
     end
   end
 
-  def add_book
-    puts 'Enter book title..'
-    title = gets.chomp
-    puts 'Enter author name..'
-    author = gets.chomp
-    new_book = Book.new(title, author)
-    @all_books << new_book
-    puts 'Book Created Successfully'
+  def create_student(age, name)
+    print 'Has parent permission? [Y/N]: '
+    permission = gets.chomp
+    permission = %w[Y y].include?(permission)
+
+    student = Student.new(age, name, parent_permission: permission)
+    @persons << student
+    puts 'Student created successfully'
   end
 
-  def add_rental
-    puts 'Select a person from the list by number (not ID)'
-    people
-    person_index = gets.chomp.to_i
-    puts 'Select a book from the list by number (not ID)'
-    books
-    book_index = gets.chomp.to_i
-    puts 'Enter date'
-    date = gets.chomp
-    new_rental = Rental.new(date, @all_books[book_index], @all_people[person_index])
-    @all_rentals << new_rental
-    puts 'Rental Added Successfully'
+  def create_teacher(age, name)
+    print 'Specialization: '
+    specialization = gets.chomp
+
+    teacher = Teacher.new(age, specialization, name)
+    @persons << teacher
+    puts 'Teacher created successfully'
   end
 
-  def all_personal_rentals(id)
-    person_rental = @all_rentals.select do |rental|
-      rental.person.id == id
+  # list all person
+  def list_persons
+    @persons.each do |person|
+      display_person(person)
     end
-    puts person_rental
+  end
+
+  # create book
+  def create_book(title, author)
+    @books << Book.new(title, author)
+    puts 'Book created successfully'
+  end
+
+  # list all book
+  def list_books
+    @books.each do |book|
+      display_books(book)
+    end
+  end
+
+  def create_rental(date, book_index, person_index)
+    @rentals << Rental.new(date, @books[book_index], @persons[person_index])
+    puts 'Rental created successfully'
+  end
+
+  def list_rentals_by_person(person_id)
+    person = @persons.find { |p| p.id == person_id }
+    rentals = @rentals.select { |r| r.person == person }
+    puts 'Rentals'
+    rentals.each do |r|
+      puts "Date: #{r.date}, Book: \"#{r.book.title}\" by #{r.book.author}"
+    end
+  end
+
+  def display_person(person)
+    puts "[#{person.class.name}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+  end
+
+  def display_books(book)
+    puts "Title: \"#{book.title}\", Author: #{book.author}"
   end
 
   def save_data
