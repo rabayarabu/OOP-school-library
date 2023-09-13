@@ -12,17 +12,18 @@ class App
     @all_books = []
     @all_people = []
     @all_rentals = []
+    load_data
   end
 
   def books
     @all_books.each_with_index do |book, index|
-      puts "#{index}) #{book}"
+      puts "#{index + 1}) #{book}"
     end
   end
 
   def people
     @all_people.each_with_index do |person, index|
-      puts "#{index}) #{person}"
+      puts "#{index + 1}) #{person}"
     end
   end
 
@@ -103,5 +104,12 @@ class App
     File.write('./people.json', JSON.generate(@all_people))
     File.write('rentals.json', JSON.generate(@all_rentals))
     puts 'Data saved successfully.'
+  end
+
+  def load_data
+    @all_books = JSON.parse(File.read('books.json')) if File.exist?('books.json')
+    @all_people = JSON.parse(File.read('people.json')) if File.exist?('people.json')
+    @all_rentals = JSON.parse(File.read('rentals.json')) if File.exist?('rentals.json')
+    puts 'Data loaded successfully.'
   end
 end
