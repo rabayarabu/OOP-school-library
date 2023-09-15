@@ -5,7 +5,8 @@ class Rental
     @date = date
     @book = book
     @person = person
-    book.rentals << self
-    person.rentals << self
+    # Check if person and book are not nil before adding the rental
+    book.rentals << self if book
+    person.rentals << self if person
   end
 end
