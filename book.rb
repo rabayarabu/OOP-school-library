@@ -7,11 +7,7 @@ class Book
     @rentals = []
   end
 
-  def rental(rental)
-    @rentals.push(rental)
-  end
-
-  def to_s
-    "Title: #{@title}, Author: #{@author}"
+  def add_rental(person, date)
+    Rental.new(date, self, person)
   end
 end

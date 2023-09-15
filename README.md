@@ -112,9 +112,6 @@ To run the project, instantiate the class files in `main.rb` and execute the fol
 👤 ClarenceAtim
 - GitHub: [&nbsp; &nbsp; @githubhandle] (https://github.com/ClarenceAtim?tab=repositories)
 
-
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
