@@ -1,15 +1,14 @@
+require_relative 'person'
+
 class Teacher < Person
   attr_accessor :specialization
 
-  def initialize(age, _specialization, name = 'Unknown')
-    super(age, name)
+  def initialize(specialization, age, name = 'Unknown', parent_permission: true)
+    super(age, name, parent_permission: parent_permission)
+    @specialization = specialization
   end
 
-  def can_use_services
+  def can_use_services?
     true
-  end
-
-  def to_s
-    "Teacher: Age: #{@age}, Specialization: #{@specialization}, ID: #{@id}"
   end
 end
